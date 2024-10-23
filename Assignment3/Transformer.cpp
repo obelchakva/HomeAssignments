@@ -18,7 +18,7 @@ int Transformer::getSpeed() const {
 	return speed_;
 }
 
-void Transformer::setPowerLevel(int power) const {
+void Transformer::setPowerLevel(int power)  {
 	powerLevel_ = power;
 }
 
