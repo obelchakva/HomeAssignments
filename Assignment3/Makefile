@@ -1,14 +1,21 @@
 CXX = g++
-CXXFLAGS = -Wall -g
-TARGET = transformers
-OBJS = Transformer.o Autobot.o Decepticon.o Prime.o main.o
-all: $(TARGET)
-$(TARGET): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $@ $^
-%.o: %.cpp %.h
-	$(CXX) $(CXXFLAGS) -c $<
+CXXFLAGS = -std=c++11 -Wall -I.
+LDFLAGS = -lgtest -lpthread
+EXEC = transformers
+TEST_EXEC = tests
+SRC = main.cpp Transformer.cpp Autobot.cpp Decepticon.cpp Prime.cpp
+OBJ = $(SRC:.cpp=.o)
+TEST_SRC = tf_test.cpp Transformer.cpp Autobot.cpp Decepticon.cpp Prime.cpp
+TEST_OBJ = $(TEST_SRC:.cpp=.o)
+.PHONY: all clean test
+all: $(EXEC)
+$(EXEC): $(OBJ)
+	$(CXX) $(OBJ) -o $(EXEC)
+test: $(TEST_EXEC)
+	./$(TEST_EXEC)
+$(TEST_EXEC): $(TEST_OBJ)
+	$(CXX) $(TEST_OBJ) -o $(TEST_EXEC) $(LDFLAGS)
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 clean:
-	rm -f $(OBJS) $(TARGET)
-run: $(TARGET)
-	./$(TARGET)
-
+	rm -f $(OBJ) $(EXEC) $(TEST_OBJ) $(TEST_EXEC)
