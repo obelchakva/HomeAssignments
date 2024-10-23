@@ -6,7 +6,7 @@
 
 class Decepticon : public Transformer {
 public:
-	Decepticone(const std::string& name, int powerLevel, int speed, const Weapon& weapon, const std::vector<std::string>&
+	Decepticon(const std::string& name, int powerLevel, int speed, const Weapon& weapon, const std::vector<std::string>&
 abilities);
 
 	std::vector<std::string> getSpecialAbilities() const;
