@@ -3,7 +3,7 @@
 Autobot::Autobot(const std::string& name, int powerLevel, int speed, const Weapon& weapon, bool canFly)
 	: Transformer(name, powerLevel, speed, weapon), canFly_(canFly) {}
 
-bool Autobot::getCanfly() const {
+bool Autobot::getCanFly() const {
 	return canFly_;
 }
 
