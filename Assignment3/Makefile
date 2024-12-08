@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -std=c++11 -Wall -I.
+CXXFLAGS = -std=c++17 -Wall -I.
 LDFLAGS = -lgtest -lpthread
 EXEC = transformers
 TEST_EXEC = tests
