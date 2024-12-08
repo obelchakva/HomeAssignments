@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -std=c++11 -Wall -Werror -Wpedantic -I.
+CXXFLAGS = -std=c++17 -Wall -Werror -Wpedantic -I.
 LDFLAGS = -lgtest -lpthread
 SRCS = main.cpp Transformer.cpp Autobot.cpp Decepticon.cpp Prime.cpp
 OBJS = $(SRCS:.cpp=.o)
