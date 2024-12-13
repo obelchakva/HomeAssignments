@@ -1,3 +1,6 @@
+/* Obelchak Vyacheslav st129564@student.spbu.ru
+   Home assignment #3
+*/
 #include "Transformer.h"
 
 Transformer::Transformer(const std::string& name, int powerLevel, int speed,
