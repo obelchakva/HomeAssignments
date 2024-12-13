@@ -1,3 +1,6 @@
+/* Obelchak Vyacheslav st129564@student.spbu.ru
+   Home assignment #4
+*/
 #include "Prime.h"
 
 Prime::Prime(const std::string& name, int powerLevel, int speed, const Weapon& weapon, bool canFly)
