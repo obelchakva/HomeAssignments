@@ -1,3 +1,6 @@
+/* Obelchak Vyacheslav st129564@student.spbu.ru
+   Home assignment #3
+*/
 #include "Autobot.h"
 
 Autobot::Autobot(const std::string& name, int powerLevel, int speed, const Weapon& weapon, bool canFly)
