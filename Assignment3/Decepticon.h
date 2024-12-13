@@ -1,3 +1,6 @@
+/* Obelchak Vyacheslav st129564@student.spbu.ru
+   Home assignment #3
+*/
 #ifndef DECEPTICONE_H
 #define DECEPTICONE_H
 
