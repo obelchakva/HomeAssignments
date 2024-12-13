@@ -1,3 +1,6 @@
+/* Obelchak Vyacheslav st129564@student.spbu.ru
+   Home assignment #3
+*/
 #include "Decepticon.h"
 
 Decepticon::Decepticon(const std::string& name, int powerLevel, int speed, const Weapon& weapon,
