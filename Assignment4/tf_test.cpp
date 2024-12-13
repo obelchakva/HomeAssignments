@@ -1,3 +1,6 @@
+/* Obelchak Vyacheslav st129564@student.spbu.ru
+   Home assignment #4
+*/
 #include <gtest/gtest.h>
 #include "Transformer.h"
 #include "Autobot.h"
