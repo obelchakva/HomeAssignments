@@ -1,3 +1,6 @@
+/* Obelchak Vyacheslav st129564@student.spbu.ru
+   Home assignment #4
+*/
 #ifndef PRIME_H
 #define PRIME_H
 
