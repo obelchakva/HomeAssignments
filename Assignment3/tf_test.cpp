@@ -9,8 +9,9 @@
 
 TEST(TransformerTest, InitializationTest) {
     Weapon weapon("Laser");
+    auto alliance = std::make_shared<Alliance>("Cybertron");
 
-    Transformer transformer("Optimus", 100, 50, weapon);
+    Transformer transformer("Optimus", 100, 50, weapon, alliance);
     EXPECT_EQ(transformer.getName(), "Optimus");
     EXPECT_EQ(transformer.getPowerLevel(), 100);
     EXPECT_EQ(transformer.getSpeed(), 50);
@@ -23,13 +24,17 @@ TEST(TransformerTest, InitializationTest) {
 
 TEST(TransformerTest, AttackTest) {
     Weapon weapon("Sword");
-    Transformer transformer("Megatron", 80, 40, weapon);
+    auto alliance = std::make_shared<Alliance>("Cybertron");
+
+    Transformer transformer("Megatron", 80, 40, weapon, alliance);
     EXPECT_EQ(transformer.attack(), "Attack with Sword");
 }
 
 TEST(AutobotTest, InitializationTest) {
     Weapon weapon("Blaster");
-    Autobot autobot("Bumblebee", 70, 55, weapon, true);
+    auto alliance = std::make_shared<Alliance>("Cybertron");
+
+    Autobot autobot("Bumblebee", 70, 55, weapon, true, alliance);
 
     EXPECT_EQ(autobot.getName(), "Bumblebee");
     EXPECT_EQ(autobot.getPowerLevel(), 70);
@@ -39,14 +44,18 @@ TEST(AutobotTest, InitializationTest) {
 
 TEST(AutobotTest, AttackTest) {
     Weapon weapon("Particle Cannon");
-    Autobot autobot("Ironhide", 90, 45, weapon, false);
+    auto alliance = std::make_shared<Alliance>("Cybertron");
+
+    Autobot autobot("Ironhide", 90, 45, weapon, false, alliance);
     EXPECT_EQ(autobot.attack(), "Attack with Particle Cannon (Autobot)");
 }
 
 TEST(DecepticonTest, InitializationTest) {
     Weapon weapon("Flamethrower");
     std::vector<std::string> abilities = {"Invisibility", "Teleportation"};
-    Decepticon decepticon("Starscream", 85, 60, weapon, abilities);
+    auto alliance = std::make_shared<Alliance>("Cybertron");
+
+    Decepticon decepticon("Starscream", 85, 60, weapon, abilities, alliance);
 
     EXPECT_EQ(decepticon.getName(), "Starscream");
     EXPECT_EQ(decepticon.getPowerLevel(), 85);
@@ -56,13 +65,17 @@ TEST(DecepticonTest, InitializationTest) {
 
 TEST(DecepticonTest, AttackTest) {
     Weapon weapon("Shadow Blade");
-    Decepticon decepticon("Soundwave", 75, 50, weapon, {});
+    auto alliance = std::make_shared<Alliance>("Cybertron");
+
+    Decepticon decepticon("Soundwave", 75, 50, weapon, {}, alliance);
     EXPECT_EQ(decepticon.attack(), "Attack with Shadow Blade (Decepticon)");
 }
 
 TEST(PrimeTest, InitializationTest) {
     Weapon weapon("Matrix of Leadership");
-    Prime prime("Optimus Prime", 100, 70, weapon, true);
+    auto alliance = std::make_shared<Alliance>("Cybertron");
+
+    Prime prime("Optimus Prime", 100, 70, weapon, true, alliance);
 
     EXPECT_EQ(prime.getName(), "Optimus Prime");
     EXPECT_EQ(prime.getPowerLevel(), 100);
@@ -72,7 +85,9 @@ TEST(PrimeTest, InitializationTest) {
 
 TEST(PrimeTest, AttackTest) {
     Weapon weapon("Energy Axe");
-    Prime prime("Optimus Prime", 100, 70, weapon, true);
+    auto alliance = std::make_shared<Alliance>("Cybertron");
+
+    Prime prime("Optimus Prime", 100, 70, weapon, true, alliance);
     EXPECT_EQ(prime.attack(), "Attack with Energy Axe (Autobot) (Prime)");
 }
 
