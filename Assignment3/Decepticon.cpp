@@ -3,14 +3,13 @@
 */
 #include "Decepticon.h"
 
-Decepticon::Decepticon(const std::string& name, int powerLevel, int speed, const Weapon& weapon,
-const std::vector<std::string>& abilities)
-	: Transformer(name, powerLevel, speed, weapon), specialAbilities_(abilities) {}
+Decepticon::Decepticon(const std::string& name, int powerLevel, int speed, const Weapon& weapon, const std::vector<std::string>& abilities, std::shared_ptr<Alliance> alliance)
+    : Transformer(name, powerLevel, speed, weapon, alliance), specialAbilities_(abilities) {}
 
 std::vector<std::string> Decepticon::getSpecialAbilities() const {
-	return specialAbilities_;
+    return specialAbilities_;
 }
 
 std::string Decepticon::attack() const {
-	return Transformer::attack() + " (Decepticon)";
+    return Transformer::attack() + " (Decepticon)";
 }
