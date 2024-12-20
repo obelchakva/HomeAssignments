@@ -14,6 +14,14 @@ public:
     void setCanFly(bool canFly);
     std::string attack() const override;
 
+    // Переопределяем оператор << для вывода дополнительной информации
+    friend std::ostream& operator<<(std::ostream& os, const Autobot& a);
+
+    // Переопределяем операторы сравнения
+    bool operator<(const Autobot& other) const;
+    bool operator>(const Autobot& other) const;
+    bool operator==(const Autobot& other) const;
+
 private:
     bool canFly_;
 };
