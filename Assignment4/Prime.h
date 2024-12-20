@@ -8,11 +8,8 @@
 
 class Prime : public Autobot {
 public:
-	Prime(const std::string& name, int powerLevel, int speed, const Weapon& weapon, bool canFly);
-	std::string attack() const override;
-
-	friend std::ostream& operator<<(std::ostream& os, const Prime& prime);
-
+    Prime(const std::string& name, int powerLevel, int speed, const Weapon& weapon, bool canFly, std::shared_ptr<Alliance> alliance);
+    std::string attack() const override;
 };
 
 #endif

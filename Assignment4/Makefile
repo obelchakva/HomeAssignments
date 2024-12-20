@@ -1,26 +1,23 @@
 CXX = g++
 CXXFLAGS = -std=c++17 -Wall -Werror -Wpedantic -I.
 LDFLAGS = -lgtest -lpthread
-SRCS = main.cpp Transformer.cpp Autobot.cpp Decepticon.cpp Prime.cpp
-OBJS = $(SRCS:.cpp=.o)
-TEST_SRCS = tf_test.cpp Transformer.cpp Autobot.cpp Decepticon.cpp Prime.cpp
-TEST_OBJS = $(TEST_SRCS:.cpp=.o)
 EXEC = transformers
 TEST_EXEC = tests
-
+SRC = main.cpp Transformer.cpp Autobot.cpp Decepticon.cpp Prime.cpp Alliance.cpp Weapon.cpp
+OBJ = $(SRC:.cpp=.o)
+TEST_SRC = tf_test.cpp Transformer.cpp Autobot.cpp Decepticon.cpp Prime.cpp Alliance.cpp Weapon.cpp
+TEST_OBJ = $(TEST_SRC:.cpp=.o)
+.PHONY: all clean test
 all: $(EXEC)
-
-$(EXEC): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $@ $(OBJS)
-
-test: $(TEST_OBJS)
-	$(CXX) $(CXXFLAGS) -o $(TEST_EXEC) $(TEST_OBJS) $(LDFLAGS)
+$(EXEC): $(OBJ)
+	$(CXX) $(OBJ) -o $(EXEC)
+test: $(TEST_EXEC)
 	./$(TEST_EXEC)
-
+$(TEST_EXEC): $(TEST_OBJ)
+	$(CXX) $(TEST_OBJ) -o $(TEST_EXEC) $(LDFLAGS)
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
-
 clean:
-	rm -f $(OBJS) $(TEST_OBJS) $(EXEC) $(TEST_EXEC)
-
-.PHONY: all clean test
+	rm -f $(OBJ) $(EXEC) $(TEST_OBJ) $(TEST_EXEC)
+format:
+	astyle --=google *.h *.cpp

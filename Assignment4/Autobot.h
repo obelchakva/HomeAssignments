@@ -8,16 +8,14 @@
 
 class Autobot : public Transformer {
 public:
-	Autobot(const std::string& name, int powerLevel, int speed, const Weapon& weapon, bool canFly);
-
-	bool getCanFly() const;
-	void setCanFly(bool canFly);
-	std::string attack() const override;
-
-	friend std::ostream& operator<<(std::ostream& os, const Autobot& autobot);
+    Autobot(const std::string& name, int powerLevel, int speed, const Weapon& weapon, bool canFly, std::shared_ptr<Alliance> alliance);
+    
+    bool getCanFly() const;
+    void setCanFly(bool canFly);
+    std::string attack() const override;
 
 private:
-	bool canFly_;
+    bool canFly_;
 };
 
 #endif
