@@ -14,6 +14,14 @@ public:
     std::vector<std::string> getSpecialAbilities() const;
     std::string attack() const override;
 
+    // Переопределяем оператор << для вывода дополнительной информации
+    friend std::ostream& operator<<(std::ostream& os, const Decepticon& d);
+
+    // Переопределяем операторы сравнения
+    bool operator<(const Decepticon& other) const;
+    bool operator>(const Decepticon& other) const;
+    bool operator==(const Decepticon& other) const;
+
 private:
     std::vector<std::string> specialAbilities_;
 };
