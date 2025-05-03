@@ -91,6 +91,48 @@ TEST(PrimeTest, AttackTest) {
     EXPECT_EQ(prime.attack(), "Attack with Energy Axe (Autobot) (Prime)");
 }
 
+// Новые тесты для проверки операторов "<", ">" и "==" в наследуемых классах
+
+// Проверяем, что объект Autobot, способный летать, считается сильнее другого
+TEST(AutobotTest, ComparisonWithFlight) {
+    Weapon laser("Laser");
+    auto alliance = std::make_shared<Alliance>("Cybertron");
+
+    Autobot bumblebee("Bumblebee", 70, 55, laser, true, alliance); // Способен летать
+    Autobot ratchet("Ratchet", 70, 55, laser, false, alliance); // Не способен летать
+
+    ASSERT_GT(bumblebee, ratchet); // Bumblebee должен считаться сильнее Ratchet'а
+    ASSERT_LT(ratchet, bumblebee); // Ratchet слабее Bumblebee
+    ASSERT_FALSE(bumblebee == ratchet); // Они не равны
+}
+
+// Проверяем, что Decepticon с большим количеством способностей считается сильнее
+TEST(DecepticonTest, ComparisonWithAbilities) {
+    Weapon flamethrower("Flamethrower");
+    auto alliance = std::make_shared<Alliance>("Cybertron");
+
+    Decepticon starscream("Starscream", 85, 60, flamethrower, {"Invisibility", "Flight"}, alliance); // 2 способности
+    Decepticon soundwave("Soundwave", 85, 60, flamethrower, {"Mind Control"}, alliance); // 1 способность
+
+    ASSERT_GT(starscream, soundwave); // Starscream сильнее Soundwave
+    ASSERT_LT(soundwave, starscream); // Soundwave слабее Starscream
+    ASSERT_FALSE(starscream == soundwave); // Они не равны
+}
+
+// Проверяем, что Prime обладает преимуществом над обычным Autobot'ом
+TEST(PrimeTest, ComparisonAsLeader) {
+    Weapon matrix("Matrix of Leadership");
+    Weapon laser("Laser");
+    auto alliance = std::make_shared<Alliance>("Cybertron");
+
+    Prime optimusPrime("Optimus Prime", 100, 70, matrix, true, alliance); // Лидер
+    Autobot hound("Hound", 70, 55, laser, false, alliance); // Обычный солдат
+
+    ASSERT_GT(optimusPrime, hound); // Optimus Prime сильнее Hound
+    ASSERT_LT(hound, optimusPrime); // Hound слабее Optimus Prime
+    ASSERT_FALSE(optimusPrime == hound); // Они не равны
+}
+
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();

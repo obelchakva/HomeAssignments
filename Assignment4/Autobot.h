@@ -21,6 +21,12 @@ public:
     bool operator<(const Autobot& other) const;
     bool operator>(const Autobot& other) const;
     bool operator==(const Autobot& other) const;
+    
+    
+    // Добавляем недостающие объявления
+    bool lessThan(const Transformer &other) const override;
+    bool greaterThan(const Transformer &other) const override;
+    bool equalTo(const Transformer &other) const override;
 
 private:
     bool canFly_;

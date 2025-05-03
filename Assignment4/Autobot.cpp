@@ -39,3 +39,30 @@ bool Autobot::operator>(const Autobot& other) const {
 bool Autobot::operator==(const Autobot& other) const {
     return (powerLevel_ == other.powerLevel_) && (speed_ == other.speed_) && (canFly_ == other.canFly_);
 }
+
+
+bool Autobot::lessThan(const Transformer &other) const {
+    if (dynamic_cast<const Autobot*>(&other)) {
+        const Autobot* otherBot = dynamic_cast<const Autobot*>(&other);
+        return (powerLevel_ + speed_ + (canFly_ ? 10 : 0)) < (otherBot->powerLevel_ + otherBot->speed_ + (otherBot->canFly_ ? 10 : 0));
+    }
+    return Transformer::lessThan(other); // По умолчанию используем базовую логику
+}
+
+bool Autobot::greaterThan(const Transformer &other) const {
+    if (dynamic_cast<const Autobot*>(&other)) {
+        const Autobot* otherBot = dynamic_cast<const Autobot*>(&other);
+        return (powerLevel_ + speed_ + (canFly_ ? 10 : 0)) > (otherBot->powerLevel_ + otherBot->speed_ + (otherBot->canFly_ ? 10 : 0));
+    }
+    return Transformer::greaterThan(other); // По умолчанию используем базовую логику
+}
+
+bool Autobot::equalTo(const Transformer &other) const {
+    if (dynamic_cast<const Autobot*>(&other)) {
+        const Autobot* otherBot = dynamic_cast<const Autobot*>(&other);
+        return (powerLevel_ == otherBot->powerLevel_) &&
+               (speed_ == otherBot->speed_) &&
+               (canFly_ == otherBot->canFly_);
+    }
+    return Transformer::equalTo(other); // По умолчанию используем базовую логику
+}

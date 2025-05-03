@@ -31,3 +31,28 @@ bool Prime::operator>(const Prime& other) const {
 bool Prime::operator==(const Prime& other) const {
     return (powerLevel_ == other.powerLevel_) && (speed_ == other.speed_);
 }
+
+
+bool Prime::lessThan(const Transformer &other) const {
+    if (dynamic_cast<const Prime*>(&other)) {
+        const Prime *otherPrime = dynamic_cast<const Prime*>(&other);
+        return (powerLevel_ + speed_ + 20) < (otherPrime->powerLevel_ + otherPrime->speed_ + 20);
+    }
+    return Transformer::lessThan(other); // Используем базовую логику для остальных случаев
+}
+
+bool Prime::greaterThan(const Transformer &other) const {
+    if (dynamic_cast<const Prime*>(&other)) {
+        const Prime *otherPrime = dynamic_cast<const Prime*>(&other);
+        return (powerLevel_ + speed_ + 20) > (otherPrime->powerLevel_ + otherPrime->speed_ + 20);
+    }
+    return Transformer::greaterThan(other); // Используем базовую логику для остальных случаев
+}
+
+bool Prime::equalTo(const Transformer &other) const {
+    if (dynamic_cast<const Prime*>(&other)) {
+        const Prime *otherPrime = dynamic_cast<const Prime*>(&other);
+        return (powerLevel_ == otherPrime->powerLevel_) && (speed_ == otherPrime->speed_);
+    }
+    return Transformer::equalTo(other); // Используем базовую логику для остальных случаев
+}

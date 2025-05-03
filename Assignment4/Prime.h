@@ -18,6 +18,12 @@ public:
     bool operator<(const Prime& other) const;
     bool operator>(const Prime& other) const;
     bool operator==(const Prime& other) const;
+    
+    
+    // Добавляем недостающие объявления
+    bool lessThan(const Transformer &other) const override;
+    bool greaterThan(const Transformer &other) const override;
+    bool equalTo(const Transformer &other) const override;
 };
 
 #endif

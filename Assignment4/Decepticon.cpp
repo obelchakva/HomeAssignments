@@ -34,3 +34,30 @@ bool Decepticon::operator>(const Decepticon& other) const {
 bool Decepticon::operator==(const Decepticon& other) const {
     return (powerLevel_ == other.powerLevel_) && (speed_ == other.speed_) && (specialAbilities_ == other.specialAbilities_);
 }
+
+
+bool Decepticon::lessThan(const Transformer &other) const {
+    if (dynamic_cast<const Decepticon*>(&other)) {
+        const Decepticon* otherCon = dynamic_cast<const Decepticon*>(&other);
+        return (powerLevel_ + speed_ + specialAbilities_.size()) < (otherCon->powerLevel_ + otherCon->speed_ + otherCon->specialAbilities_.size());
+    }
+    return Transformer::lessThan(other); // По умолчанию используем базовую логику
+}
+
+bool Decepticon::greaterThan(const Transformer &other) const {
+    if (dynamic_cast<const Decepticon*>(&other)) {
+        const Decepticon* otherCon = dynamic_cast<const Decepticon*>(&other);
+        return (powerLevel_ + speed_ + specialAbilities_.size()) > (otherCon->powerLevel_ + otherCon->speed_ + otherCon->specialAbilities_.size());
+    }
+    return Transformer::greaterThan(other); // По умолчанию используем базовую логику
+}
+
+bool Decepticon::equalTo(const Transformer &other) const {
+    if (dynamic_cast<const Decepticon*>(&other)) {
+        const Decepticon* otherCon = dynamic_cast<const Decepticon*>(&other);
+        return (powerLevel_ == otherCon->powerLevel_) &&
+               (speed_ == otherCon->speed_) &&
+               (specialAbilities_ == otherCon->specialAbilities_);
+    }
+    return Transformer::equalTo(other); // По умолчанию используем базовую логику
+}

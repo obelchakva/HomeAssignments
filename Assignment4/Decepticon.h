@@ -21,6 +21,12 @@ public:
     bool operator<(const Decepticon& other) const;
     bool operator>(const Decepticon& other) const;
     bool operator==(const Decepticon& other) const;
+    
+    
+    // Добавляем недостающие объявления
+    bool lessThan(const Transformer &other) const override;
+    bool greaterThan(const Transformer &other) const override;
+    bool equalTo(const Transformer &other) const override;
 
 private:
     std::vector<std::string> specialAbilities_;

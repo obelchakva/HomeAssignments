@@ -77,3 +77,16 @@ bool Transformer::operator>(const Transformer& other) const {
 bool Transformer::operator==(const Transformer& other) const {
     return (powerLevel_ == other.powerLevel_) && (speed_ == other.speed_);
 }
+
+
+bool Transformer::lessThan(const Transformer &other) const {
+    return (powerLevel_ + speed_) < (other.powerLevel_ + other.speed_);
+}
+
+bool Transformer::greaterThan(const Transformer &other) const {
+    return (powerLevel_ + speed_) > (other.powerLevel_ + other.speed_);
+}
+
+bool Transformer::equalTo(const Transformer &other) const {
+    return (powerLevel_ == other.powerLevel_) && (speed_ == other.speed_);
+}

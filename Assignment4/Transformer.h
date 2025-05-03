@@ -35,6 +35,25 @@ public:
     bool operator<(const Transformer& other) const;
     bool operator>(const Transformer& other) const;
     bool operator==(const Transformer& other) const; // Добавлены нужные операторы
+    
+    
+    virtual bool lessThan(const Transformer &other) const; // Метод для сравнения "меньше"
+    virtual bool greaterThan(const Transformer &other) const; // Метод для сравнения "больше"
+    virtual bool equalTo(const Transformer &other) const; // Метод для сравнения равенства
+
+    // Глобальные операторы сравнения, работающие с любыми двумя объектами Transformers
+    friend bool operator<(const Transformer &lhs, const Transformer &rhs) {
+        return lhs.lessThan(rhs);
+    }
+
+    friend bool operator>(const Transformer &lhs, const Transformer &rhs) {
+        return lhs.greaterThan(rhs);
+    }
+
+    friend bool operator==(const Transformer &lhs, const Transformer &rhs) {
+        return lhs.equalTo(rhs);
+    }
+
 
 protected:
     std::string name_;
